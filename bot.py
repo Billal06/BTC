@@ -1,5 +1,5 @@
 from telegram.ext import Updater, CommandHandler as CH
-import os, requests, json, os
+import os, requests, json
 from flask import Flask
 
 app = Flask(__name__)
@@ -17,6 +17,11 @@ Tentang:
   Author : Billal Fauzan
   Version: 0.1
   Name   : Corona Info
+
+Jadwal Aktif:
+  senin - kamis = 06.00 WIB/20.00 WIB
+  jumat = 06.00 WIB/11.00 WIB
+  sabtu = 12.00 WIB/20.00 WIB
 
 Bot Ini Masih Ilegal
 """%(nama)
@@ -200,7 +205,7 @@ def index():
 	ud.add_handler(CH("cegah", cegah))
 	up.start_polling()
 #	up.idle()
-	return "Bot Sedang Berjalan"
+	return "Status: ON"
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=os.environ.get("PORT"),debug=True)
