@@ -45,6 +45,7 @@ Perintah
 
 def local(update, context):
 	data = []
+	psn = []
 	try:
 		prov = context.args[0]
 		tampil(update, "Meminta Data Ke Server")
@@ -60,15 +61,19 @@ Provinsi : %s
 Positif  : %s
 Meninggal: %s
 Sembuh   : %s
-
 """%(provinsi, str(db["Kasus_Posi"]), str(db['Kasus_Meni']), str(db['Kasus_Semb']))
-				print (pesan)
-				tampil(update, pesan)
+				psn.append(pesan)
+		if len(psn) > 0:
+			for msg in psn:
+				tampil(update, msg)
+		elif len(psn) < 0:
+			tampil(update, "Provinsi Tidak Di Temukan")
 	except IndexError:
 		tampil(update, "/local <nama provinsi>")
 
 def ginfo(update, context):
 	data = []
+	psn = []
 	try:
 		ngr = context.args[0]
 		tampil(update, "Meminta Data Ke Server")
@@ -88,8 +93,10 @@ Positif  : %s
 Meninggal: %s
 Sembuh   : %s
 """%(negara, positif, meninggal, sembuh)
-				print (pesan)
-				tampil(update, pesan)
+				psn.append(pesan)
+		if len(psn) > 0:
+			for msg in psn:
+				tampil(update, msg)
 	except IndexError:
 		tampil(update, "/global <nama negara>")
 
